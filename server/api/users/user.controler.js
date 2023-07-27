@@ -38,7 +38,7 @@ console.log(req.body);
       } else {
        
         const salt = bcrypt.genSaltSync();
-        //changing the value of password from req.body with the encrypted password
+        
         req.body.password = bcrypt.hashSync(password, salt);
 
         register(req.body, (err, results) => {
@@ -60,13 +60,7 @@ console.log(req.body);
             req.body.userId = results[0].user_id;
             console.log(req.body);
 
-            // ALTER TABLE statement to add 'last_name' column
-            // const alterTableQuery = 'ALTER TABLE profile ADD COLUMN last_name VARCHAR(255)';
-            // pool.query(alterTableQuery, (err) => {
-            //   if (err) {
-            //     console.log(err);
-            //     return res.status(500).json({ msg: 'Database connection error' });
-            //   }
+           
 
               profile(req.body, (err, results) => {
                 if (err) {

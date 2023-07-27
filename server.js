@@ -7,7 +7,7 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT ||80;
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -22,6 +22,5 @@ app.use('/api/users', userRouter);
 app.use("/api/questions", questionRouter);
 app.use("/api/answers", answerRouter);
 
-app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
-});
+app.listen(port, "0.0.0.0",() =>
+  console.log(`Listening at http://localhost:${port}`));
